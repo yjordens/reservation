@@ -1,0 +1,30 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+    <h1  class="form-header">
+        Reservatiebeheer
+        <span>Hier kan je een wagen reserveren.</span>
+    </h1>
+    <form wicket:id="form" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.reservatie"/></legend>
+                <table class="box" cellspacing="1" align="center" width="100%">
+                    <tbody>
+                        <tr style="height: 20px;">
+                            <td valign="top"><span wicket:id="overview"></span></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><span wicket:id="header"></span></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><div wicket:id="view"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+     </fieldset>
+    <span wicket:id="buttons" />
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+    </form>
+</wicket:panel>

@@ -1,0 +1,19 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+    <wicket:panel>
+        <div id="warning" class="modal-box wrapper">
+            <div class="inside light-yellow">
+                <img wicket:id="feedback-img" style="float: left; width: 50px; height: 61px; padding-right: 20px;"/>
+                <div style="display: inline-block;">
+                    <h3><span wicket:id="title" /></h3>
+                    <ul wicket:id="feedbackul">
+                      <li wicket:id="messages" class="error" style="list-style-type: disc;">
+                        <span wicket:id="message">A message</span>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </wicket:panel>
+</body>
+</html>

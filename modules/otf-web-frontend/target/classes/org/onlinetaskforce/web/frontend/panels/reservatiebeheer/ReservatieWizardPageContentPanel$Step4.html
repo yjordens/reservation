@@ -1,0 +1,32 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <table cellspacing="1" align="center" width="100%">
+        <tbody>
+            <tr style="height: 20px;">
+                <td width="25%"><wicket:message key="label.beginDatum"/></td>
+                <td>
+                    <label wicket:id="reservatie.BeginDatum" />
+                </td>
+            </tr>
+            <tr style="height: 20px;">
+                <td width="25%"><wicket:message key="label.eindDatum"/></td>
+                <td>
+                    <label wicket:id="reservatie.EindDatum" />
+                </td>
+            </tr>
+            <tr style="height: 20px;">
+                <td width="25%"><wicket:message key="label.wagen"/></td>
+                <td>
+                    <label wicket:id="reservatie.wagen.merk" />&nbsp;<label wicket:id="reservatie.wagen.merktype" />(<label wicket:id="reservatie.wagen.brandstof" />)
+                </td>
+            </tr>
+            <tr style="height: 20px;">
+                <td width="25%"><wicket:message key="label.nummerplaat"/></td>
+                <td>
+                    <label wicket:id="reservatie.wagen.nummerplaat" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</wicket:panel>
+</html>

@@ -1,0 +1,64 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Gebruikersbeheer
+        <span>Met dit formulier kan je een gebruiker toevoegen of wijzigen.</span>
+    </h1>
+    <form wicket:id="user-form" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.user"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><label wicket:for="username"><wicket:message key="label.gebruikersnaam"/></label></td>
+                        <td><input class="text focusOnLoad" size="25" maxlength="50" type="text" wicket:id="username"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Naam"><wicket:message key="label.naam"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Naam"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Voornaam"><wicket:message key="label.voornaam"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Voornaam"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Telefoon"><wicket:message key="label.telefoon"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Telefoon"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Email"><wicket:message key="label.email"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Email"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Role"><wicket:message key="label.role"/></label></td>
+                        <td>
+                            <select wicket:id="Role" >
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Actief"><wicket:message key="label.actief"/></label></td>
+                        <td>
+                            <select wicket:id="Actief" >
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <button class="otf-btn-default" type="submit" wicket:id="verzend-btn">
+            <span class="otf-btn-default">Opslaan</span>
+        </button>
+        <button class="otf-btn-terug" type="submit" wicket:id="terug-btn">
+            <span class="otf-btn-terug">Terug</span>
+        </button>
+    </form>
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

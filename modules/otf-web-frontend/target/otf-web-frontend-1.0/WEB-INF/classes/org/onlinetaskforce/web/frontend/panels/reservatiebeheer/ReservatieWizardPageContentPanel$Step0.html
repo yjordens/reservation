@@ -1,0 +1,26 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <table cellspacing="1" align="center" width="100%">
+        <tbody>
+            <tr style="height: 20px;">
+                <td width="25%"><label wicket:for="reservatie.BeginDatum"><wicket:message key="label.beginDatum"/></label></td>
+                <td>
+                    <input class="text focusOnLoad" size="10" maxlength="10" type="text" wicket:id="reservatie.BeginDatum"/>
+                    <select wicket:id="reservatie.starttijd" >
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr style="height: 20px;">
+                <td width="25%"><label wicket:for="reservatie.EindDatum"><wicket:message key="label.eindDatum"/></label></td>
+                <td>
+                    <input class="text focusOnLoad" size="10" maxlength="10" type="text" wicket:id="reservatie.EindDatum"/>
+                    <select wicket:id="reservatie.eindtijd" >
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</wicket:panel>
+</html>

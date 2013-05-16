@@ -1,0 +1,62 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Reservatiebeheer
+        <span>Met dit formulier kan je een reservatie bekijken en annuleren.</span>
+    </h1>
+    <form wicket:id="detail-reservatie-form" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.reservatie"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td><wicket:message key="label.reservatienummer"/></td>
+                        <td><label wicket:id="ReservatieNummer" /></td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td><wicket:message key="label.periode.start"/></td>
+                        <td><label wicket:id="BeginDatum" /></td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td><wicket:message key="label.periode.einde"/></td>
+                        <td><label wicket:id="EindDatum" /></td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td><wicket:message key="label.nummerplaat"/></td>
+                        <td><label wicket:id="wagen.Nummerplaat" /></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="label.merk"/></td>
+                        <td><label wicket:id="wagen.Merk" /></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="label.merktype"/></td>
+                        <td><label wicket:id="wagen.Merktype" /></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="label.brandstof"/></td>
+                        <td><label wicket:id="wagen.Brandstof" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label wicket:id="annulatie" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <button class="otf-btn-default" type="submit" wicket:id="verzend-btn">
+            <span class="otf-btn-default">Annuleren</span>
+        </button>
+        <button class="otf-btn-terug" type="submit" wicket:id="terug-btn">
+            <span class="otf-btn-terug">Terug</span>
+        </button>
+        <button class="otf-btn-orange" type="submit" wicket:id="ontvang-wagen-btn">
+            <span class="otf-btn-orange">Ontvang</span>
+        </button>
+    </form>
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

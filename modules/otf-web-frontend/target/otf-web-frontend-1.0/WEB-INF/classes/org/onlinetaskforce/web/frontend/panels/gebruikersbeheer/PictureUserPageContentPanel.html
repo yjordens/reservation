@@ -1,0 +1,41 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Gebruikersbeheer
+        <span>Hier kan je jouw foto toevoegen.</span>
+    </h1>
+
+    <!--<form wicket:id="form">-->
+        <!--<canvas width="201px;" height="210px;" style="border:1px solid #000000;">-->
+            <!--Your browser does not support HTML5.canvas-->
+        <!--</canvas>-->
+        <!--<fieldset>-->
+            <!--<legend>Opladen foto</legend>-->
+            <!--<p>-->
+                <!--<br>-->
+                <!--<label for="uploadWithProgress">File</label><input wicket:id="fileInput" type="file" id="uploadWithProgress"/>-->
+            <!--</p>-->
+            <!--<input type="submit" value="Upload!"/>-->
+            <!--<span wicket:id="progress">[[upload progressbar]]</span>-->
+        <!--</fieldset>-->
+        <!--<button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">-->
+            <!--<span class="ui-button-text">Submit form</span>-->
+        <!--</button>-->
+        <!--<div class="clearfix"></div>-->
+    <!--</form>-->
+
+    <div wicket:id="fileUpload"></div>
+
+    <wicket:container wicket:id="preview"></wicket:container>
+
+    <wicket:container wicket:id="uploadTemplate"></wicket:container>
+
+    <wicket:container wicket:id="downloadTemplate"></wicket:container>
+
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

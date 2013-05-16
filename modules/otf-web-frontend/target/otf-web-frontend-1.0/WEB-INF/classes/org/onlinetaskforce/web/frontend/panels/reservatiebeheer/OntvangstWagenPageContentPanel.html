@@ -1,0 +1,60 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Reservatiebeheer
+        <span>Hier kan je een gereserveerde wagen terug in ontvangs nemen</span>
+    </h1>
+    <form wicket:id="ontvang-wagen-form" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.reservatie"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><wicket:message key="label.reservatienummer"/></td>
+                        <td><span wicket:id="reservatie.reservatieNummer"/></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="label.wagen.nummerplaat"/></td>
+                        <td><span wicket:id="wagen.nummerplaat"/></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="label.reserveerder"/></td>
+                        <td><span wicket:id="reserveerder.FullName"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend><wicket:message key="fieldset.wagen.ontvangst"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><label wicket:for="OntvangstTijdstip"><wicket:message key="label.tijdstip"/></label></td>
+                        <td>
+                            <input class="text focusOnLoad" size="10" maxlength="10" type="text" wicket:id="OntvangstTijdstip"/>
+                            <select wicket:id="ontvangsttijd" >
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Opmerking"><wicket:message key="label.opmerking"/></label></td>
+                        <td><textarea cols="60" rows="7" wicket:id="Opmerking" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <button class="otf-btn-default" type="submit" wicket:id="verzend-btn">
+            <span class="otf-btn-default">Opslaan</span>
+        </button>
+        <button class="otf-btn-terug" type="submit" wicket:id="terug-btn">
+            <span class="otf-btn-terug">Terug</span>
+        </button>
+    </form>
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

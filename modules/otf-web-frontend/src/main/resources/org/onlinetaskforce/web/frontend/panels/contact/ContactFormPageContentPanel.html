@@ -1,0 +1,81 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Contact
+        <span>Vul je gegevens in en wij nemen zo spoedig mogelijk contact met je op.</span>
+    </h1>
+    <form wicket:id="contactForm" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.persoon"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><label wicket:for="Naam"><wicket:message key="label.name"/></label></td>
+                        <td><input class="text focusOnLoad" size="25" maxlength="100" type="text" wicket:id="Naam"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Voornaam"><wicket:message key="label.firstname"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Voornaam"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend><wicket:message key="fieldset.adres"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><label wicket:for="Straat"><wicket:message key="label.straat"/></label></td>
+                        <td><input class="text focusOnLoad" size="25" maxlength="100" type="text" wicket:id="Straat"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Huisnummer"><wicket:message key="label.huisnummer"/></label></td>
+                        <td><input type="text" size="4" maxlength="100" class="text" wicket:id="Huisnummer"/>&nbsp;
+                        <label wicket:for="Postbus"><wicket:message key="label.postbus"/></label>
+                        <input type="text" size="4" maxlength="100" class="text" wicket:id="Postbus"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Gemeente"><wicket:message key="label.gemeente"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Gemeente"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Postcode"><wicket:message key="label.postcode"/></label></td>
+                        <td><input type="text" size="6" maxlength="100" class="text" wicket:id="Postcode"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend><wicket:message key="fieldset.contact"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><label wicket:for="Telefoon"><wicket:message key="label.telefoon"/></label></td>
+                        <td><input class="text focusOnLoad" size="25" maxlength="100" type="text" wicket:id="Telefoon"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Gsm"><wicket:message key="label.gsm"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Gsm"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Fax"><wicket:message key="label.fax"/></label></td>
+                        <td><input type="text" size="25" maxlength="100" class="text" wicket:id="Fax"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Email"><wicket:message key="label.email"/></label></td>
+                        <td><input type="email" size="25" maxlength="100" class="text" wicket:id="Email"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <button type="submit" wicket:id="verzend-btn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="background-color: #83B0C9;" role="button" aria-disabled="false">
+            <span class="ui-button-text">Verzenden</span>
+        </button>
+    </form>
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

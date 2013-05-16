@@ -1,0 +1,17 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:child/>
+<wicket:panel>
+    <wicket:enclosure child="lnkAdd">
+        <br/>
+        <div class="rijKnoppen">
+            <a class="knopAdd" href="#" wicket:id="lnkAdd"><span><wicket:message key="gridpanel.submit.button"/></span></a>
+        </div>
+    </wicket:enclosure>
+    <br/>
+    <table class="spreadsheet" cellspacing="1" wicket:id="datatable">
+        [table]
+    </table>
+</wicket:panel>
+</body>
+</html>

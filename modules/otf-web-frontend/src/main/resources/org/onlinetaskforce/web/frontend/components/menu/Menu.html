@@ -1,0 +1,31 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+</head>
+<body>
+    <wicket:panel>
+        <ul class="sf-menu" id="nav">
+          <li class="selected"><a wicket:id="home-menu" href="#">Home</a></li>
+            <li><a wicket:id="reservaties-menu" href="#">Reservaties</a>
+                <ul>
+                    <li style="background: #eee; border: 1px solid #ddd;"><a wicket:id="overview-reservaties-menu" href="#">Overzicht<img style="float: right; width: 24px; height: 24px;" wicket:id="secure-icon" /></a></li>
+                    <li style="background: #eee; border: 1px solid #ddd;"><a wicket:id="create-reservaties-menu" href="#">Aanmaken<img style="float: right; width: 24px; height: 24px;" wicket:id="secure-icon" /></a></li>
+                </ul>
+            </li>
+          <li><a wicket:id="user-menu" href="#">Gebruikersbeheer</a>
+              <ul>
+                  <div wicket:id="pictureMenuIem" />
+                  <div wicket:id="overviewUserMenuIem" />
+                  <div wicket:id="detailUserMenuIem" />
+                  <li style="background: #eee; border: 1px solid #ddd;"><a wicket:id="change-password" href="#">Wijzig WW<img style="float: right; width: 24px; height: 24px;" wicket:id="secure-icon" /></a></li>
+              </ul>
+          </li>
+          <li><a wicket:id="wagen-menu" href="#">Wagenbeheer</a>
+              <ul>
+                  <li style="background: #eee; border: 1px solid #ddd;"><a wicket:id="overview-wagen-menu" href="#">Overzicht<img style="float: right; width: 24px; height: 24px;" wicket:id="secure-icon" /></a></li>
+                  <li style="background: #eee; border: 1px solid #ddd;"><a wicket:id="detail-wagen-menu" href="#">Aanmaken<img style="float: right; width: 24px; height: 24px;" wicket:id="secure-icon" /></a></li>
+              </ul>
+          </li>
+    </ul>
+    </wicket:panel>
+</body>
+</html>

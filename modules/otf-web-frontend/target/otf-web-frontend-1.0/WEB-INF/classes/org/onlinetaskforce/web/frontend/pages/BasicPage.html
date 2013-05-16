@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+  <title wicket:id="pageTitle">Online task force</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Bootstrap CSS Toolkit styles -->
+</head>
+
+<body>
+  <div id="main">
+          <header>
+              <div style="background-color: white;">
+                <div id="logo">
+                  <div id="logo_text">
+                    <!-- class="logo_colour", allows you to change the colour of the text -->
+                    <h1><a href="index.html" style="color: #e60c1c;">ESSERS<span class="logo_colour"> Carpool</span></a></h1>
+                    <h2>Reservatie systeem.</h2>
+                  </div>
+                </div>
+              </div>
+            <nav>
+              <div wicket:id="menu_container"/>
+            </nav>
+          </header>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <div class="sidebar">
+            <div wicket:id="user"/>
+        </div>
+      </div>
+      <div wicket:id="feedback"/>
+      <div id="content" wicket:id="content-container">
+          <wicket:child />
+      </div>
+    </div>
+  </div>
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('ul.sf-menu').sooperfish();
+      $('.top').click(function() {$('html, body').animate({scrollTop:0}, 'fast'); return false;});
+    });
+  </script>
+</body>
+</html>

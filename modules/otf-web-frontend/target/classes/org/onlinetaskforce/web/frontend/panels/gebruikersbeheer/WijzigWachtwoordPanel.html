@@ -1,0 +1,44 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h1  class="form-header">
+        Wachtwoordbeheer
+        <span>Hier kan je je wachtwoord wijzigen.</span>
+    </h1>
+    <form wicket:id="ww-form" action="" method="POST">
+        <fieldset>
+            <legend><wicket:message key="fieldset.ww"/></legend>
+            <table class="box" cellspacing="1" align="center" width="100%">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td width="25%"><wicket:message key="label.username"/></td>
+                        <td><span wicket:id="Gebruiker"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="Wachtwoord"><wicket:message key="label.oud.ww"/></label></td>
+                        <td><input type="password" size="25" maxlength="100" class="text" wicket:id="Wachtwoord"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="NieuwWachtwoord"><wicket:message key="label.new.ww"/></label></td>
+                        <td><input type="password" size="25" maxlength="100" class="text" wicket:id="NieuwWachtwoord"/></td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="NieuwWachtwoordBevestiging"><wicket:message key="label.new.ww.confirm"/></label></td>
+                        <td><input type="password" size="25" maxlength="100" class="text" wicket:id="NieuwWachtwoordBevestiging"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <button class="otf-btn-default" type="submit" wicket:id="verzend-btn">
+            <span class="otf-btn-default">Wijzigen</span>
+        </button>
+        <button class="otf-btn-terug" type="submit" wicket:id="terug-btn">
+            <span class="otf-btn-terug">Annuleren</span>
+        </button>
+    </form>
+    <footer>
+        <p>
+            <wicket:message key="footer.text" />
+        </p>
+    </footer>
+</wicket:panel>
+</html>

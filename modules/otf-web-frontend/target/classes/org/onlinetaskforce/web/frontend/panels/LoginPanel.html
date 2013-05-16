@@ -1,0 +1,24 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+    <h3>Login</h3>
+    <h4 wicket:id="status">Je bent nog niet aangemeld!</h4>
+    <h5 wicket:id="dateTime">[datum]</h5>
+    <form wicket:id="loginForm" action="" method="POST">
+        <table class="box" cellspacing="1" align="center">
+            <tbody>
+                <tr style="height: 20px;">
+                    <td><label wicket:for="Gebruikersnaam"><wicket:message key="label.username"/></label></td>
+                    <td><input class="text focusOnLoad" size="10" maxlength="10" type="text" wicket:id="Gebruikersnaam"/></td>
+                </tr>
+                <tr>
+                    <td><label wicket:for="Wachtwoord"><wicket:message key="label.password"/></label></td>
+                    <td><input type="password" size="10" maxlength="8" class="text" wicket:id="Wachtwoord"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button wicket:id="login-btn" type="submit" name="submit" value="Login" class="login-button"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</wicket:panel>
+</html>
