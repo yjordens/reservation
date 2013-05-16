@@ -29,12 +29,12 @@ $.fn.sooperfish = function(op) {
     dualColumn  : 6, //if a submenu has at least this many items it will be divided in 2 columns
     tripleColumn  : 12, //if a submenu has at least this many items it will be divided in 3 columns
     hoverClass  : 'sfHover',
-    delay    : 500, //make sure menus only disappear when intended, 500ms is advised by Jacob Nielsen
+    delay    : 10, //500 make sure menus only disappear when intended, 500ms is advised by Jacob Nielsen
     animationShow  : {height:'show'},
-    speedShow    : 600,
+    speedShow    : 100, //600,
     easingShow      : sooperEasingShow,
     animationHide  : {height:'hide',opacity:'hide'},
-    speedHide    : 200,
+    speedHide    : 10, //200,
     easingHide      : sooperEasingHide,
     autoArrows  : true, //Adds span elements to parent li elements, projecting arrow images on these items to indicate submenus. I added an alternative image file with white arrows.
     onShow    : function(){}, //callback after showing menu

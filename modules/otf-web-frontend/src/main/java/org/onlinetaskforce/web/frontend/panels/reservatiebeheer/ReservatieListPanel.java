@@ -49,7 +49,7 @@ public class ReservatieListPanel extends GridPanel<Reservatie, String> {
         List<IColumn<Reservatie, String>> columns = new ArrayList<IColumn<Reservatie, String>>();
         columns.add(new PropertyColumn<Reservatie, String>(new Model<String>("Reservatienummer"), "reservatieNummer"));
         columns.add(new PropertyColumn<Reservatie, String>(new Model<String>("Wagen"), "wagen.nummerplaat"));
-        columns.add(new PropertyColumn<Reservatie, String>(new Model<String>("GeBruiker"), "creatieGebruikerId") {
+        columns.add(new PropertyColumn<Reservatie, String>(new Model<String>("Gebruiker"), "creatieGebruikerId") {
             @Override
             public void populateItem(Item<ICellPopulator<Reservatie>> iCellPopulatorItem, String componentId, IModel<Reservatie> rowModel) {
                 Gebruiker gebruiker = gebruikerService.getGebruikerById(rowModel.getObject().getCreatieGebruikerId());
