@@ -30,6 +30,7 @@ create index I_FK01_GEBRUIKER on GEBRUIKER(creatieGebruiker_id);
 create index I_FK02_GEBRUIKER on GEBRUIKER(wijzigingsGebruiker_id);
 
 create sequence GEBRUIKER_SEQ;
+GRANT SELECT, INSERT, UPDATE, DELETE ON GEBRUIKER_SEQ TO yjordens_essers;
 
 insert into gebruiker(id, naam, voornaam, user_id, wachtwoord, actief) values (nextval('GEBRUIKER_SEQ'),'Jordens','Yvan','jordenyv','4d7547a1d2787c72f0e985d8b5194295e4aa6141',true);
 

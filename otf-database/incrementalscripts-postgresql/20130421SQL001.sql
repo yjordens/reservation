@@ -26,6 +26,7 @@ create index I_FK02_WAGEN on WAGEN(wijzigingsGebruiker_id);
 GRANT SELECT, INSERT, UPDATE, DELETE ON WAGEN TO yjordens_essers;
 
 create sequence WAGEN_SEQ;
+GRANT SELECT, INSERT, UPDATE, DELETE ON WAGEN_SEQ TO yjordens_essers;
 
 -----------------------------------
 -- scriptid                      --

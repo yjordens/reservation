@@ -28,6 +28,7 @@ create index I_FK03_WAGEN_ONTVANGST on WAGEN_ONTVANGST(reserveerder_id);
 create index I_FK04_WAGEN_ONTVANGST on WAGEN_ONTVANGST(wagen_id);
 
 create sequence WAGEN_ONTVANGST_SEQ;
+GRANT SELECT, INSERT, UPDATE, DELETE ON WAGEN_ONTVANGST_SEQ TO yjordens_essers;
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON WAGEN_ONTVANGST TO yjordens_essers;
 
@@ -61,6 +62,7 @@ create index I_FK04_RESERVATIE on RESERVATIE(annulatieGebruikerId);
 create sequence RESERVATIE_SEQ;
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON RESERVATIE TO yjordens_essers;
+GRANT SELECT, INSERT, UPDATE, DELETE ON RESERVATIE_SEQ TO yjordens_essers;
 
 -----------------------------------
 -- scriptid                      --
