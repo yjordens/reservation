@@ -29,8 +29,6 @@ public class BasicPage extends AbstractBasicPage {
         Application.get().getMarkupSettings().setStripWicketTags(true);
         contentContainer = new WebMarkupContainer("content-container");
         add(contentContainer);
-
-
     }
 
     @Override
