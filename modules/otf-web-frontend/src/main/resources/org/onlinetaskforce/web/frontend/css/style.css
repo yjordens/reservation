@@ -630,6 +630,7 @@ ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected {
     padding-bottom: 5px;
     margin-top: 2px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .otf-btn-terug {
@@ -641,6 +642,7 @@ ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected {
     padding-bottom: 5px;
     margin-top: 2px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .otf-btn-orange {
@@ -652,6 +654,7 @@ ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected {
     padding-bottom: 5px;
     margin-top: 2px;
     border-radius: 8px;
+    cursor: pointer;
 }
 .otf-btn-red {
     background-color: #cc423c;
@@ -662,6 +665,7 @@ ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected {
     padding-bottom: 5px;
     margin-top: 2px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .otf-btn-default {
@@ -673,5 +677,6 @@ ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected {
     padding-bottom: 5px;
     margin-top: 2px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
