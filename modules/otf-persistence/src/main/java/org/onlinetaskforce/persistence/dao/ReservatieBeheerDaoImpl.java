@@ -71,6 +71,8 @@ public class ReservatieBeheerDaoImpl extends BaseDomainDaoImpl<Reservatie, Strin
             mainCondition.logicalAnd(qc);
             parameters.put("open", dto.getOpen());
         }
+        hql.addOrderByField("r.reservatieNummer desc");
+
         List<Reservatie> result = getCurrentSession()
                 .createQuery(hql.resolve())
                 .setProperties(parameters)

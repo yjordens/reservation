@@ -27,4 +27,9 @@ public class ReservatieWizardPage extends BasicPage implements SecurePage {
         this();
         success(message);
     }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
+    }
 }

@@ -70,6 +70,11 @@ public class GebruikerDaoImpl extends BaseDomainDaoImpl<Gebruiker, String> imple
             mainCondition.logicalAnd(qc);
             parameters.put("a", dto.getActief());
         }
+        if (dto.getPermission() != null) {
+            QueryCondition qc = new QueryCondition("g.role = :role");
+            mainCondition.logicalAnd(qc);
+            parameters.put("role", dto.getPermission());
+        }
         List<Gebruiker> result = getCurrentSession()
                 .createQuery(hql.resolve())
                 .setProperties(parameters)

@@ -80,6 +80,22 @@ public class DetailUserPage extends BasicPage implements SecurePage {
         if (!this.komendeVanOverview) {
             terugBtn.setVisible(false);
         }
+
+        final AjaxButton resetWwBtn = new AjaxButton("reset-btn") {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                try {
+                    gebruikerService.resetWachtwoord((Gebruiker)contentPanel.getForm().getDefaultModelObject());
+                    success(new StringResourceModel("reset.ww.success", this, null).getString());
+                } catch (BusinessException e) {
+                    error(new StringResourceModel(e.getMessageKey(), this, null).getString());
+                } finally {
+                    AbstractBasicPage page = (AbstractBasicPage)getPage();
+                    target.add(page);
+                }
+            }
+        };
+        contentPanel.getForm().add(resetWwBtn);
     }
 
     @Override

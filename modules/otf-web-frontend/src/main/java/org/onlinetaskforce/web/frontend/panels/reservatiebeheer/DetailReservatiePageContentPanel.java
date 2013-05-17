@@ -62,6 +62,7 @@ public class DetailReservatiePageContentPanel extends BasicPanel {
 
             setModel(new CompoundPropertyModel(model));
             add(new Label("ReservatieNummer"));
+            add(new Label("Doel"));
             add(new Label("BeginDatum") {
                 @Override
                 public <C> IConverter<C> getConverter(Class<C> type) {

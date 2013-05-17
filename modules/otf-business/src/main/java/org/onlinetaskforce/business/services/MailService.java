@@ -37,4 +37,10 @@ public interface MailService {
      * @param gebruiker
      */
     void sendWelcomeEmail(Gebruiker gebruiker) throws BusinessException;
+
+    /**
+     * Sends a email to the given user to cionfirm his/her password reset with instructions
+     * @param gebruiker the user to send te email to
+     */
+    void sendResetWachtwoordEmail(Gebruiker gebruiker) throws BusinessException;
 }

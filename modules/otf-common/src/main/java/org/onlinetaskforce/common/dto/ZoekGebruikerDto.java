@@ -1,5 +1,7 @@
 package org.onlinetaskforce.common.dto;
 
+import org.onlinetaskforce.common.enumerations.Permission;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,7 @@ public class ZoekGebruikerDto implements Serializable{
     private String naam;
     private String voornaam;
     private Boolean actief;
+    private Permission permission;
 
     public String getGebruikersnaam() {
         return gebruikersnaam;
@@ -42,5 +45,13 @@ public class ZoekGebruikerDto implements Serializable{
 
     public void setActief(Boolean actief) {
         this.actief = actief;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
     }
 }

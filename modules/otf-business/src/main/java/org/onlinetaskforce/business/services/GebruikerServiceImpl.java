@@ -40,13 +40,13 @@ public class GebruikerServiceImpl extends BaseOtfServiceImpl implements Gebruike
     @Override
     public Gebruiker addOrModify(Gebruiker gebruiker) throws BusinessException {
         try {
-            gebruiker.setWachtwoord(Gebruiker.DEFAULT_WW);
             if (!gebruikerDao.exists(gebruiker.getId())) {
                //new gebruiker send welcome email
                 Gebruiker g = gebruikerDao.saveOrUpdate(gebruiker);
                 mailService.sendWelcomeEmail(gebruiker);
                 return g;
             } else {
+                gebruiker.setWachtwoord(Gebruiker.DEFAULT_WW);
                 gebruiker.setWijzigingsTijdstip(new Date());
                 gebruiker.setWijzigingsGebruikerId(ThreadContextInfo.getInstance().getCurrentGebruikerId());
                 return gebruikerDao.merge(gebruiker);
@@ -73,6 +73,14 @@ public class GebruikerServiceImpl extends BaseOtfServiceImpl implements Gebruike
         }
         gebruiker.setWachtwoord(newPw);
         return gebruikerDao.saveOrUpdate(gebruiker);
+    }
+
+    @Override
+    public Gebruiker resetWachtwoord(Gebruiker gebruiker) throws BusinessException {
+        gebruiker.setWachtwoord(Gebruiker.DEFAULT_WW);
+        gebruiker = gebruikerDao.merge(gebruiker);
+        mailService.sendResetWachtwoordEmail(gebruiker);
+        return gebruiker;
     }
 
     @Autowired

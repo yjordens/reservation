@@ -59,7 +59,6 @@ public class ReservatieWizardPageContentPanel extends Wizard {
     private IDynamicWizardStep step3KiesWagen;
     private IDynamicWizardStep step4Confirmation;
 
-    //private String radioGroup;
     private RadioGroup radioGroup;
     private List<Wagen> wagenkeuzes;
 

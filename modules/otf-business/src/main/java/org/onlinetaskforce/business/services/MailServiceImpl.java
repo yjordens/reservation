@@ -3,7 +3,9 @@ package org.onlinetaskforce.business.services;
 import org.onlinetaskforce.common.domain.Gebruiker;
 import org.onlinetaskforce.common.domain.Reservatie;
 import org.onlinetaskforce.common.dto.ContactFormDto;
+import org.onlinetaskforce.common.dto.ZoekGebruikerDto;
 import org.onlinetaskforce.common.email.OtfMailProperties;
+import org.onlinetaskforce.common.enumerations.Permission;
 import org.onlinetaskforce.common.exceptions.BusinessException;
 import org.onlinetaskforce.common.exceptions.BusinessExceptionKeys;
 import org.onlinetaskforce.common.log.Log;
@@ -17,6 +19,7 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -83,9 +86,16 @@ public class MailServiceImpl extends BaseOtfServiceImpl implements MailService {
                 .append(OtfMailProperties.getInstance().getProperty("reservatie.mail.rules"));
             }
 
+            ZoekGebruikerDto zgdto = new ZoekGebruikerDto();
+            zgdto.setPermission(Permission.ADMIN);
+            List<Gebruiker> ccBebruikers = gebruikerService.overview(zgdto);
+
             MimeMessage eMailMsg = otfMailSender.createMimeMessage();
             MimeMessageHelper message = new MimeMessageHelper(eMailMsg, false, "UTF-8");
             message.setTo(gebruiker.getEmail());
+            if (ccBebruikers != null && ccBebruikers.size() > 0) {
+                message.setCc(getCc(ccBebruikers));
+            }
             message.setSubject(OtfMailProperties.getInstance().getProperty("reservatie.mail.subject") + " " + reservatie.getReservatieNummer());
             message.setText(builder.toString(), false);
             message.setSentDate(new Date());
@@ -97,6 +107,15 @@ public class MailServiceImpl extends BaseOtfServiceImpl implements MailService {
             Log.error(this, e);
             throw new BusinessException(BusinessExceptionKeys.BE_KEY_MAIL_SEND_FAILURE);
         }
+    }
+
+    private String[] getCc(List<Gebruiker> ccBebruikers) {
+        String[] result = new String[]{};
+        List<String> ccs = new ArrayList<String>();
+        for (Gebruiker ccBebruiker : ccBebruikers) {
+            ccs.add(ccBebruiker.getEmail());
+        }
+        return ccs.toArray(result);
     }
 
     @Override
@@ -147,7 +166,7 @@ public class MailServiceImpl extends BaseOtfServiceImpl implements MailService {
             .append(OtfMailProperties.getInstance().getProperty("welcome.mail.text2")).append(" ").append(gebruiker.getUsername()).append("\n")
             .append(OtfMailProperties.getInstance().getProperty("welcome.mail.text3")).append(" ").append(Gebruiker.DEFAULT_WW_TXT).append("\n\n");
 
-            builder.append(OtfMailProperties.getInstance().getProperty("welcome.mail.text4")).append(":\n");
+            builder.append(OtfMailProperties.getInstance().getProperty("welcome.mail.text4")).append("\n");
             builder.append(OtfMailProperties.getInstance().getProperty("welcome.mail.text5")).append("\n\n");
 
             builder.append(OtfMailProperties.getInstance().getProperty("welcome.mail.text6")).append("\n");
@@ -156,6 +175,37 @@ public class MailServiceImpl extends BaseOtfServiceImpl implements MailService {
             MimeMessageHelper message = new MimeMessageHelper(eMailMsg, false, "UTF-8");
             message.setTo(gebruiker.getEmail());
             message.setSubject(OtfMailProperties.getInstance().getProperty("welcome.mail.subject"));
+            message.setText(builder.toString(), false);
+            message.setSentDate(new Date());
+            otfMailSender.send(eMailMsg);
+        } catch (MailException e) {
+            Log.error(this, e);
+            throw new BusinessException(BusinessExceptionKeys.BE_KEY_MAIL_SEND_FAILURE);
+        } catch (MessagingException e) {
+            Log.error(this, e);
+            throw new BusinessException(BusinessExceptionKeys.BE_KEY_MAIL_SEND_FAILURE);
+        }
+    }
+
+    @Override
+    public void sendResetWachtwoordEmail(Gebruiker gebruiker) throws BusinessException {
+        try {
+            StringBuilder builder = new StringBuilder();
+
+            builder.append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.greet")).append(" ").append(gebruiker.getFullName()).append("\n\n")
+            .append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text1")).append("\n")
+            .append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text2")).append(" ").append(gebruiker.getUsername()).append("\n")
+            .append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text3")).append(" ").append(Gebruiker.DEFAULT_WW_TXT).append("\n\n");
+
+            builder.append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text4")).append("\n");
+            builder.append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text5")).append("\n\n");
+
+            builder.append(OtfMailProperties.getInstance().getProperty("reset.ww.mail.text6")).append("\n");
+
+            MimeMessage eMailMsg = otfMailSender.createMimeMessage();
+            MimeMessageHelper message = new MimeMessageHelper(eMailMsg, false, "UTF-8");
+            message.setTo(gebruiker.getEmail());
+            message.setSubject(OtfMailProperties.getInstance().getProperty("reset.ww.mail.subject"));
             message.setText(builder.toString(), false);
             message.setSentDate(new Date());
             otfMailSender.send(eMailMsg);

@@ -54,4 +54,11 @@ public interface GebruikerService {
      * @throws BusinessException
      */
     Gebruiker changePassword(String id, String oldPw, String newPw) throws BusinessException;
+
+    /**
+     * resets te wachtwoord to the default and sends an email to the gebruiker
+     * @param gebruiker the user whos password needs to be reset
+     * @return
+     */
+    Gebruiker resetWachtwoord(Gebruiker gebruiker) throws BusinessException;
 }

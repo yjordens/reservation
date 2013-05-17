@@ -3,9 +3,12 @@ package org.onlinetaskforce.web.frontend.panels.gebruikersbeheer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.ByteArrayResource;
+import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.convert.IConverter;
 import org.onlinetaskforce.business.services.GebruikerService;
@@ -25,6 +28,7 @@ import java.util.List;
  */
 public class DetailUserPageContentPanel extends BasicPanel {
     private UserForm form;
+    private Image picure;
 
     @SpringBean
     private GebruikerService gebruikerService;
@@ -55,6 +59,13 @@ public class DetailUserPageContentPanel extends BasicPanel {
             super(id, model);
 
             setModel(new CompoundPropertyModel(model));
+            if (model.getObject().getPicture() == null) {
+                add(new Image("picture", new PackageResourceReference(this.getClass(), "../../images/no-img-available.jpg")));
+            } else {
+                ByteArrayResource byteArrayResource = new ByteArrayResource("image", model.getObject().getPicture());
+                add(new Image("picture", byteArrayResource));
+            }
+
             add(new RequiredTextField<String>("username"));
             add(new RequiredTextField<String>("Naam"));
             add(new RequiredTextField<String>("Voornaam"));
