@@ -69,17 +69,13 @@ public class reservatieBeheerServiceImpl extends BaseOtfServiceImpl implements R
     }
 
     @Override
-    public void ontvangWagen(WagenOntvangst wagenOntvangst) {
+    public void ontvangWagen(WagenOntvangst wagenOntvangst, Reservatie reservatie) {
         wagenOntvangst.setCreatieGebruikerId(ThreadContextInfo.getInstance().getCurrentGebruikerId());
         wagenOntvangst.setCreatieTijdstip(new Date());
         wagenOntvangstDao.saveOrUpdate(wagenOntvangst);
-    }
 
-    @Override
-    public WagenOntvangst findWagenOntvangst(Reservatie reservatie) {
-        WagenOntvangst wagenOntvangst =  wagenOntvangstDao.findByReservatieId(reservatie.getId());
-
-        return wagenOntvangst;
+        reservatie.setWagenOntvangst(wagenOntvangst);
+        reservatieBeheerDao.merge(reservatie);
     }
 
     @Autowired

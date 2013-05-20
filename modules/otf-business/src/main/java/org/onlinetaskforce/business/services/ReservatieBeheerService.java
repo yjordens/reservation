@@ -51,13 +51,7 @@ public interface ReservatieBeheerService {
     /**
      * Neemt een wagen in ontvangst
      * @param wagenOntvangst
+     * @param reservatie
      */
-    void ontvangWagen(WagenOntvangst wagenOntvangst);
-
-    /**
-     * Searches a WagenOntvangst given a reservation
-     * @param reservatie the criteria to search with
-     * @return @see description
-     */
-    WagenOntvangst findWagenOntvangst(Reservatie reservatie);
+    void ontvangWagen(WagenOntvangst wagenOntvangst, Reservatie reservatie);
 }

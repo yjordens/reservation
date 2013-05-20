@@ -10,8 +10,10 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.convert.IConverter;
 import org.onlinetaskforce.business.services.GebruikerService;
 import org.onlinetaskforce.business.services.ReservatieBeheerService;
+import org.onlinetaskforce.business.services.WagenBeheerService;
 import org.onlinetaskforce.common.domain.Gebruiker;
 import org.onlinetaskforce.common.domain.Reservatie;
+import org.onlinetaskforce.common.domain.WagenOntvangst;
 import org.onlinetaskforce.web.frontend.panels.BasicPanel;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +31,8 @@ public class DetailReservatiePageContentPanel extends BasicPanel {
     private ReservatieBeheerService reservatieBeheerService;
     @SpringBean
     private GebruikerService gebruikerService;
+    @SpringBean
+    private WagenBeheerService wagenBeheerService;
 
     /**
      * Initializes the view
@@ -46,7 +50,12 @@ public class DetailReservatiePageContentPanel extends BasicPanel {
         if (model.getObject().isAnnulatie()) {
             annuleerder = gebruikerService.getGebruikerById((model.getObject()).getAnnulatieGebruikerId());
         }
-        form = new DetailWagenForm("detail-reservatie-form", model, annuleerder);
+        Gebruiker ontvanger = null;
+        WagenOntvangst wo = model.getObject().getWagenOntvangst();
+        if (wo != null) {
+            ontvanger = gebruikerService.getGebruikerById(wo.getCreatieGebruikerId());
+        }
+        form = new DetailWagenForm("detail-reservatie-form", model, annuleerder, wo, ontvanger);
         add(form);
     }
 
@@ -57,7 +66,7 @@ public class DetailReservatiePageContentPanel extends BasicPanel {
 
     public static final class DetailWagenForm extends Form {
 
-        public DetailWagenForm(String id, IModel<Reservatie> model, Gebruiker annuleerder) {
+        public DetailWagenForm(String id, IModel<Reservatie> model, Gebruiker annuleerder, WagenOntvangst wo, Gebruiker ontvanger) {
             super(id, model);
 
             setModel(new CompoundPropertyModel(model));
@@ -81,18 +90,32 @@ public class DetailReservatiePageContentPanel extends BasicPanel {
             add(new Label("wagen.Brandstof"));
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-            StringBuilder builder = new StringBuilder("Geannuleerd op ");
+            StringBuilder builder = new StringBuilder("Geannuleerd op: ");
             if (annuleerder != null) {
                 builder.append(sdf.format(((Reservatie)getDefaultModelObject()).getAnnulatieTijdstip()));
                 builder.append(" door ").append(annuleerder.getFullName());
             }
             Label annulatieLbl = new Label("annulatie", new Model<String>(builder.toString()));
-            if (((Reservatie)getDefaultModelObject()).isAnnulatie()) {
-                annulatieLbl.setVisible(true);
-            } else {
-                annulatieLbl.setVisible(false);
-            }
+//            if (((Reservatie)getDefaultModelObject()).isAnnulatie()) {
+//                annulatieLbl.setVisible(true);
+//            } else {
+//                annulatieLbl.setVisible(false);
+//            }
             add(annulatieLbl);
+
+            StringBuilder ontvangstStr = new StringBuilder("Ontvangen op: ");
+            if (wo != null) {
+                ontvangstStr.append(sdf.format(wo.getOntvangstTijdstip()));
+                ontvangstStr.append(" door ").append(ontvanger.getFullName());
+            }
+            Label ontvangenLbl = new Label("ontvangst", new Model<String>(ontvangstStr.toString()));
+//            if (wo != null) {
+//                ontvangenLbl.setVisible(true);
+//            } else {
+//                ontvangenLbl.setVisible(false);
+//            }
+            add(ontvangenLbl);
+
         }
     }
 

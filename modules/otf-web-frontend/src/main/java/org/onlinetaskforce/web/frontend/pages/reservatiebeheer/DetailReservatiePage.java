@@ -1,5 +1,6 @@
 package org.onlinetaskforce.web.frontend.pages.reservatiebeheer;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
@@ -82,6 +83,14 @@ public class DetailReservatiePage extends BasicPage implements SecurePage {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 setResponsePage(new OntvangstWagenPage(model));
+            }
+
+            @Override
+            protected void onConfigure() {
+                super.onConfigure();
+                if (!StringUtils.isBlank(model.getObject().getAnnulatieGebruikerId())) {
+                    setVisible(false);
+                }
             }
         };
         Permissions.of(ontvangBtn)

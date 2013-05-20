@@ -42,11 +42,11 @@ public class GebruikerServiceImpl extends BaseOtfServiceImpl implements Gebruike
         try {
             if (!gebruikerDao.exists(gebruiker.getId())) {
                //new gebruiker send welcome email
+                gebruiker.setWachtwoord(Gebruiker.DEFAULT_WW);
                 Gebruiker g = gebruikerDao.saveOrUpdate(gebruiker);
                 mailService.sendWelcomeEmail(gebruiker);
                 return g;
             } else {
-                gebruiker.setWachtwoord(Gebruiker.DEFAULT_WW);
                 gebruiker.setWijzigingsTijdstip(new Date());
                 gebruiker.setWijzigingsGebruikerId(ThreadContextInfo.getInstance().getCurrentGebruikerId());
                 return gebruikerDao.merge(gebruiker);

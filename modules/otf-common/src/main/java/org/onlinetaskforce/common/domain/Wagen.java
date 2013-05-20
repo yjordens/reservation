@@ -47,6 +47,12 @@ public class Wagen extends AbstractAuditPojo{
     @Column(name = "actief", nullable = false)
     private Boolean actief;
 
+    /**
+     * KilometerStand
+     */
+    @Column(name = "kilometerStand", nullable = false, updatable = true)
+    private Long kilometerStand;
+
     public String getNummerplaat() {
         return nummerplaat;
     }
@@ -85,5 +91,13 @@ public class Wagen extends AbstractAuditPojo{
 
     public void setBrandstof(BrandstofEnum brandstof) {
         this.brandstof = brandstof;
+    }
+
+    public Long getKilometerStand() {
+        return kilometerStand;
+    }
+
+    public void setKilometerStand(Long kilometerStand) {
+        this.kilometerStand = kilometerStand;
     }
 }

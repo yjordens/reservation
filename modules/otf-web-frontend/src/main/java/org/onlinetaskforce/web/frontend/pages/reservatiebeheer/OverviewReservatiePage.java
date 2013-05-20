@@ -106,6 +106,8 @@ public class OverviewReservatiePage extends BasicPage implements SecurePage {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 zoekReservatieModel.setObject(new ZoekReservatieDto());
+                OtfWebSession session = (OtfWebSession)getSession();
+                zoekReservatieModel.getObject().setGebruikersnaam(session.getGebruiker().getUsername());
                 form.clearInput();
                 form.setDefaultModelObject(zoekReservatieModel.getObject());
                 AbstractBasicPage page = (AbstractBasicPage)getPage();

@@ -21,14 +21,4 @@ public class WagenOntvangstDaoImpl extends BaseDomainDaoImpl<WagenOntvangst, Str
      public WagenOntvangstDaoImpl() {
         super(WagenOntvangst.class);
     }
-
-    @Override
-    public WagenOntvangst findByReservatieId(String id) {
-        String hql = "select wo from WagenOntvangst wo where wo.reservatie.id = :id";
-        WagenOntvangst result = (WagenOntvangst) getCurrentSession()
-                .createQuery(hql)
-                .setString("id", id)
-                .uniqueResult();
-        return result;
-    }
 }

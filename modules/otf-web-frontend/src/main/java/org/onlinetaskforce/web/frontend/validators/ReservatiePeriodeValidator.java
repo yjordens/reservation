@@ -56,6 +56,8 @@ public class ReservatiePeriodeValidator implements IFormValidator {
             form.error(new StringResourceModel("period.end.before.start", form.getPage(), null).getString());
         } else if (eindCal.getTime().equals(beginCal.getTime())) {
             form.error(new StringResourceModel("period.end.equals.start", form.getPage(), null).getString());
+        } else if (beginCal.getTime().before(new Date())) {
+            form.error(new StringResourceModel("period.start.before.now", form.getPage(), null).getString());
         }
     }
 }

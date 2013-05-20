@@ -67,7 +67,8 @@ public class ReservatieBeheerDaoImpl extends BaseDomainDaoImpl<Reservatie, Strin
             parameters.put("wid", dto.getWagenId());
         }
         if (dto.getOpen() != null) {
-            QueryCondition qc = new QueryCondition("r.eindDatum >= :open and not exists (select wo.id from WagenOntvangst wo where wo.reservatie.id = r.id) and r.annulatieTijdstip is null");
+            //QueryCondition qc = new QueryCondition("r.eindDatum >= :open and not exists (select wo.id from WagenOntvangst wo where wo.reservatie.id = r.id) and r.annulatieTijdstip is null");
+            QueryCondition qc = new QueryCondition("r.eindDatum >= :open and r.annulatieTijdstip is null and r.wagenOntvangst is null");
             mainCondition.logicalAnd(qc);
             parameters.put("open", dto.getOpen());
         }
@@ -92,9 +93,9 @@ public class ReservatieBeheerDaoImpl extends BaseDomainDaoImpl<Reservatie, Strin
         QueryCondition mainCondition = new QueryCondition("w.actief = true");
         hql.setCondition(mainCondition);
 
-        QueryCondition qc = new QueryCondition("not exists (select r.id from Reservatie r where r.eindDatum >= :begdte and r.eindDatum <= :einddte and" +
-                " r.wagen.id = w.id and r.annulatieGebruikerId is null and" +
-                " not exists (select wo.id from WagenOntvangst wo where wo.reservatie.id = r.id))");
+        QueryCondition qc = new QueryCondition("not exists (select r.id from Reservatie r where r.eindDatum >= :begdte and" +
+                " r.beginDatum <= : einddte and r.wagen.id = w.id and r.annulatieGebruikerId is null and r.wagenOntvangst is null)");
+                //" not exists (select wo.id from WagenOntvangst wo where wo.reservatie.id = r.id))");
         mainCondition.logicalAnd(qc);
         parameters.put("begdte", reservatie.getBeginDatum());
         parameters.put("einddte", reservatie.getEindDatum());

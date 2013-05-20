@@ -2,7 +2,7 @@
 <wicket:panel>
     <h1  class="form-header">
         Reservatiebeheer
-        <span>Hier kan je een gereserveerde wagen terug in ontvangs nemen</span>
+        <span>Hier kan je een gereserveerde wagen terug in ontvangst nemen</span>
     </h1>
     <form wicket:id="ontvang-wagen-form" action="" method="POST">
         <fieldset>
@@ -36,6 +36,10 @@
                                 <option></option>
                             </select>
                         </td>
+                    </tr>
+                    <tr>
+                        <td><label wicket:for="KilometerStand"><wicket:message key="label.kilometerStand"/></label></td>
+                        <td><input type="text" size="25" maxlength="6" wicket:id="KilometerStand" /></td>
                     </tr>
                     <tr>
                         <td><label wicket:for="Opmerking"><wicket:message key="label.opmerking"/></label></td>

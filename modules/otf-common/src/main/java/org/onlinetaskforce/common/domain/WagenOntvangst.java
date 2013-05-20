@@ -25,20 +25,6 @@ import java.util.GregorianCalendar;
 public class WagenOntvangst extends AbstractAuditPojo{
 
     /**
-     * The reservation.
-     */
-    @OneToOne(targetEntity = Reservatie.class, cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "reservatie_id")
-    private Reservatie reservatie;
-
-    /**
-     * The Wagen.
-     */
-    @OneToOne(targetEntity = Wagen.class, cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "wagen_id")
-    private Wagen wagen;
-
-    /**
      * The Gebruiker that owns the reservation.
      */
     @OneToOne(targetEntity = Gebruiker.class, cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
@@ -57,23 +43,7 @@ public class WagenOntvangst extends AbstractAuditPojo{
     private Date ontvangstTijdstip;
 
     private transient TijdEnum ontvangsttijd;
-
-
-    public Reservatie getReservatie() {
-        return reservatie;
-    }
-
-    public void setReservatie(Reservatie reservatie) {
-        this.reservatie = reservatie;
-    }
-
-    public Wagen getWagen() {
-        return wagen;
-    }
-
-    public void setWagen(Wagen wagen) {
-        this.wagen = wagen;
-    }
+    private transient Long kilometerStand;
 
     public Gebruiker getReserveerder() {
         return reserveerder;
@@ -97,6 +67,22 @@ public class WagenOntvangst extends AbstractAuditPojo{
 
     public void setOntvangstTijdstip(Date ontvangstTijdstip) {
         this.ontvangstTijdstip = ontvangstTijdstip;
+    }
+
+    public TijdEnum getOntvangsttijd() {
+        return ontvangsttijd;
+    }
+
+    public void setOntvangsttijd(TijdEnum ontvangsttijd) {
+        this.ontvangsttijd = ontvangsttijd;
+    }
+
+    public Long getKilometerStand() {
+        return kilometerStand;
+    }
+
+    public void setKilometerStand(Long kilometerStand) {
+        this.kilometerStand = kilometerStand;
     }
 
     /**

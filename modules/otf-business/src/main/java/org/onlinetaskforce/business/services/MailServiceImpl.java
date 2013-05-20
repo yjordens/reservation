@@ -83,7 +83,8 @@ public class MailServiceImpl extends BaseOtfServiceImpl implements MailService {
                 .append("Brandstof = ").append(reservatie.getWagen().getBrandstof()).append("\n")
                 .append("Nummerplaat = ").append(reservatie.getWagen().getNummerplaat()).append("\n\n")
                 .append("OPMERKING:").append("\n")
-                .append(OtfMailProperties.getInstance().getProperty("reservatie.mail.rules"));
+                .append(OtfMailProperties.getInstance().getProperty("reservatie.mail.rules")).append("\n\n")
+                .append(OtfMailProperties.getInstance().getProperty("reservatie.mail.text3")).append("\n");
             }
 
             ZoekGebruikerDto zgdto = new ZoekGebruikerDto();

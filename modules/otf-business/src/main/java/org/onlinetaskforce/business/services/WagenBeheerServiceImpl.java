@@ -9,6 +9,7 @@ import org.onlinetaskforce.common.exceptions.BusinessExceptionKeys;
 import org.onlinetaskforce.common.exceptions.MultipleBusinessException;
 import org.onlinetaskforce.common.log.Log;
 import org.onlinetaskforce.persistence.dao.WagenBeheerDao;
+import org.onlinetaskforce.persistence.dao.WagenOntvangstDao;
 import org.onlinetaskforce.persistence.utils.ThreadContextInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ import java.util.List;
 @Transactional
 public class WagenBeheerServiceImpl extends BaseOtfServiceImpl implements WagenBeheerService {
     private WagenBeheerDao wagenBeheerDao;
+    private WagenOntvangstDao wagenOntvangstDao;
     private ReservatieBeheerService reservatieBeheerService;
     private MailService mailService;
 
@@ -78,5 +80,10 @@ public class WagenBeheerServiceImpl extends BaseOtfServiceImpl implements WagenB
     @Autowired
     public void setMailService(MailService mailService) {
         this.mailService = mailService;
+    }
+
+    @Autowired
+    public void setWagenOntvangstDao(WagenOntvangstDao wagenOntvangstDao) {
+        this.wagenOntvangstDao = wagenOntvangstDao;
     }
 }

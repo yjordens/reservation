@@ -31,17 +31,16 @@ public class OntvangstWagenPage extends BasicPage{
 
     public OntvangstWagenPage(final IModel<Reservatie> model) {
         super(null);
-        final Model<WagenOntvangst> wagenOntvangstModel = determinWagenOntvangst(model.getObject());
-        wagenOntvangstModel.getObject().setReservatie(model.getObject());
-        wagenOntvangstModel.getObject().setWagen(model.getObject().getWagen());
-        contentPanel = new OntvangstWagenPageContentPanel("content-panel", wagenOntvangstModel);
+        final Model<WagenOntvangst> wagenOntvangstModel = determineWagenOntvangst(model.getObject());
+        contentPanel = new OntvangstWagenPageContentPanel("content-panel", wagenOntvangstModel, model);
         contentContainer.add(contentPanel);
 
         final AjaxButton verzendBtn = new AjaxButton("verzend-btn") {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 wagenOntvangstModel.getObject().defineOntvangstTijdstip();
-                reservatieBeheerService.ontvangWagen(wagenOntvangstModel.getObject());
+                model.getObject().getWagen().setKilometerStand(wagenOntvangstModel.getObject().getKilometerStand());
+                reservatieBeheerService.ontvangWagen(wagenOntvangstModel.getObject(), model.getObject());
                 setResponsePage(new OverviewReservatiePage(new StringResourceModel("ontvang.wagen.success", this, null).getString()));
             }
 
@@ -70,8 +69,8 @@ public class OntvangstWagenPage extends BasicPage{
         contentPanel.getForm().add(terugBtn);
     }
 
-    private Model<WagenOntvangst> determinWagenOntvangst(Reservatie reservatie) {
-        WagenOntvangst wagenOntvangst = reservatieBeheerService.findWagenOntvangst(reservatie);
+    private Model<WagenOntvangst> determineWagenOntvangst(Reservatie reservatie) {
+        WagenOntvangst wagenOntvangst = reservatie.getWagenOntvangst();
         if (wagenOntvangst == null) {
             wagenOntvangst = new WagenOntvangst();
         } else {

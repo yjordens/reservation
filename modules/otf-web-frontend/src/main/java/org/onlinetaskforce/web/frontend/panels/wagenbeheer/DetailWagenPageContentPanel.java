@@ -53,6 +53,7 @@ public class DetailWagenPageContentPanel extends BasicPanel {
             add(new RequiredTextField<String>("Nummerplaat"));
             add(new RequiredTextField<String>("Merk"));
             add(new RequiredTextField<String>("Merktype"));
+            add(new RequiredTextField<Long>("KilometerStand"));
             DropDownChoice<BrandstofEnum> brandstofChoices = new DropDownChoice<BrandstofEnum>("Brandstof", Arrays.asList(BrandstofEnum.values()));
             brandstofChoices.setRequired(true);
             add(brandstofChoices);

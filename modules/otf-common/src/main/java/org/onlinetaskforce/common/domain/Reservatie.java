@@ -48,6 +48,13 @@ public class Reservatie extends AbstractAuditPojo {
     @JoinColumn(name = "wagen_id")
     private Wagen wagen;
 
+    /**
+     * The Wagenontvangst.
+     */
+    @OneToOne(targetEntity = WagenOntvangst.class, optional = true, cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "wagenontvangst_id")
+    private WagenOntvangst wagenOntvangst;
+
     @Type(type = "org.onlinetaskforce.persistence.types.UtcTimestampType")
     @Column(name = "datum_begin", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,6 +89,14 @@ public class Reservatie extends AbstractAuditPojo {
 
     public void setWagen(Wagen wagen) {
         this.wagen = wagen;
+    }
+
+    public WagenOntvangst getWagenOntvangst() {
+        return wagenOntvangst;
+    }
+
+    public void setWagenOntvangst(WagenOntvangst wagenOntvangst) {
+        this.wagenOntvangst = wagenOntvangst;
     }
 
     public Date getBeginDatum() {

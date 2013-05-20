@@ -254,7 +254,7 @@ public final class DateTimeUtil {
 
     public static TijdEnum getTijdEnum(GregorianCalendar calendar) {
         StringBuilder builder = new StringBuilder("TIJD_");
-        int hour = calendar.get(Calendar.HOUR);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         String hourStr = Integer.toString(hour);
         String minuteStr = Integer.toString(minute);
